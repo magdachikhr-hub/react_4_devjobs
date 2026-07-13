@@ -1,7 +1,12 @@
 import React from "react";
+import Jobs from "./pages/Jobs";
 
 function App() {
-  return <div>App</div>;
+  return (
+    <>
+      <Jobs></Jobs>
+    </>
+  );
 }
 
 export default App;
