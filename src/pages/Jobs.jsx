@@ -6,7 +6,9 @@ function Jobs() {
   console.log(data);
   return (
     <>
-      <Card></Card>
+      {data.map((job) => (
+        <Card info={job}></Card>
+      ))}
     </>
   );
 }
