@@ -1,12 +1,15 @@
 import React from "react";
 import Jobs from "./pages/Jobs";
+import JobDetails from "./pages/JobDetails";
+import { Routes, Route } from "react-router-dom";
 
-function App() {
+export default function App() {
   return (
     <>
-      <Jobs></Jobs>
+      <Routes>
+        <Route path="/" element={<Jobs></Jobs>}></Route>
+        <Route path="/jobdetails" element={<JobDetails></JobDetails>}></Route>
+      </Routes>
     </>
   );
 }
-
-export default App;
