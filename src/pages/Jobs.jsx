@@ -7,11 +7,11 @@ function Jobs() {
   console.log(data);
   return (
     <>
-      <Link to={`/jobDetails/${}`}>
-        {data.map((job) => (
+      {data.map((job) => (
+        <Link to={`/jobDetails/${job.id}`}>
           <Card info={job}></Card>
-        ))}
-      </Link>
+        </Link>
+      ))}
     </>
   );
 }

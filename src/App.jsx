@@ -8,7 +8,10 @@ export default function App() {
     <>
       <Routes>
         <Route path="/" element={<Jobs></Jobs>}></Route>
-        <Route path="/jobdetails" element={<JobDetails></JobDetails>}></Route>
+        <Route
+          path="/jobdetails/:id"
+          element={<JobDetails></JobDetails>}
+        ></Route>
       </Routes>
     </>
   );
