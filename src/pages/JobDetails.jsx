@@ -2,6 +2,7 @@ import React from "react";
 import Jobs from "../data/data";
 import { useParams } from "react-router-dom";
 import Title from "../components/Title";
+import Info from "../components/Info";
 
 function JobDetails() {
   const { id } = useParams("/:id");
@@ -25,6 +26,7 @@ function JobDetails() {
     apply,
     contract,
     description,
+    content,
   } = selectedJob;
 
   return (
@@ -35,6 +37,17 @@ function JobDetails() {
         webLink={website}
         color={logoBackground}
       ></Title>
+      <Info
+        description={description}
+        posted={postedAt}
+        contract={contract}
+        position={position}
+        location={location}
+        content={requirements.content}
+        items={requirements.items}
+        roleContent={role.content}
+        roleItems={role.items}
+      ></Info>
     </>
   );
 }
