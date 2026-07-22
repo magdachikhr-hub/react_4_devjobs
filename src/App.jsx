@@ -2,7 +2,7 @@ import React from "react";
 import Jobs from "./pages/Jobs";
 import JobDetails from "./pages/JobDetails";
 import { Routes, Route } from "react-router-dom";
-
+import Footer from "./components/Footer";
 export default function App() {
   return (
     <>
@@ -15,6 +15,7 @@ export default function App() {
           ></Route>
         </Routes>
       </main>
+      <Footer></Footer>
     </>
   );
 }
