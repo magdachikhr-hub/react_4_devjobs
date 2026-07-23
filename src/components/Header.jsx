@@ -18,7 +18,7 @@ function Header() {
   return (
     <>
       <header className="bg-[#6771E3]">
-        <label class="inline-flex items-center cursor-pointer">
+        <label className="inline-flex items-center cursor-pointer">
           <input
             type="checkbox"
             className="sr-only peer"
