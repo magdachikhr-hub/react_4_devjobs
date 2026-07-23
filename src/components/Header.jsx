@@ -1,30 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Header() {
   const [isDark, setIsDark] = useState(() => {
-    return localStorage.getItem("theme");
+    return localStorage.getItem("theme") === "dark";
   });
 
-  // const handleDarkMode = () => {
-  //   setIsDark((d) => !d);
-  //   console.log(isDark);
-  // };
+  useEffect(() => {
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    document.body.classList.toggle("dark", isDark);
+  }, [isDark]);
 
-  const handleDarkMode = () => {
-    setIsDark((d) => !d);
-    if (isDark) {
-      localStorage.setItem("theme", "#000");
-    } else {
-      localStorage.setItem("theme", "#FFF");
-    }
+  const handleIsDark = () => {
+    setIsDark((th) => !th);
   };
   console.log(isDark);
 
   return (
     <>
       <label htmlFor="theme">theme</label>
-      <input type="checkbox" id="theme" onChange={handleDarkMode} />
+      <input
+        type="checkbox"
+        id="theme"
+        onChange={handleIsDark}
+        checked={isDark}
+      />
 
+      {/* <div className="h-6 dark:bg-black"></div> */}
       {/* <div className={`h-30 ${isDark ? `bg-amber-200` : `bg-gray-800`}`}></div> */}
     </>
   );
