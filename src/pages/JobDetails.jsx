@@ -1,17 +1,35 @@
-import React from "react";
-import Jobs from "../data/data";
+import React, { useEffect, useState } from "react";
+// import Jobs from "../data/data";
 import { useParams } from "react-router-dom";
 import Title from "../components/Title";
 import Info from "../components/Info";
+import axios from "axios";
 
 function JobDetails() {
   const { id } = useParams("/:id");
-  // console.log(id);
-  // console.log(Jobs);
-  const selectedJob = Jobs.find((job) => {
-    return job.id === Number(id);
-  });
+  const [selectedJob, setSelectedJob] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function getJob() {
+      try {
+        const response = await fetch(`http://localhost:3000/data/${id}`);
+        const data = await response.json();
+
+        setSelectedJob(data);
+
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
+    }
+    getJob();
+  }, [id]);
+
   console.log(selectedJob);
+
+  if (loading) return <p>loading...</p>;
 
   const {
     logo,
