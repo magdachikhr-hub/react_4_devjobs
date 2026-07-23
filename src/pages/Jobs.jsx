@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
+import axios from "axios";
 // import data from "../data/data";
 import { Link } from "react-router-dom";
 
@@ -8,10 +9,9 @@ function Jobs() {
 
   useEffect(() => {
     async function fetchJobs() {
-      const response = await fetch("http://localhost:3000/data");
-      const jobs = await response.json();
+      const response = await axios.get("http://localhost:3000/data");
 
-      setJobs(jobs);
+      setJobs(response.data);
     }
     fetchJobs();
   }, []);
