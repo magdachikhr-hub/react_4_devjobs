@@ -6,7 +6,10 @@ function Card({ info }) {
   return (
     <>
       <div className="bg-white w-81.75 pl-8 pt-12.25 pb-8 ">
-        <div className={`w-12.5 h-12.5 bg-${info.logoBackground}`}>
+        <div
+          className={`w-12.5 h-12.5`}
+          style={{ backgroundColor: info.logoBackground }}
+        >
           <img src={info.logo} alt="" />
         </div>
         <div>
