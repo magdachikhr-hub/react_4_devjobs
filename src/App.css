@@ -10,3 +10,7 @@
 .dark div {
   background-color: gray;
 }
+
+.checkbox-bg {
+  background-color: white !important;
+}
