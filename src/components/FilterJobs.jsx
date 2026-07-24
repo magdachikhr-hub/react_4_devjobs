@@ -7,6 +7,11 @@ function FilterJobs() {
   const handleOpenModel = () => {
     setIsOpen(true);
   };
+
+  const handleCloseModal = () => {
+    setIsOpen(false);
+  };
+
   console.log(isOpen);
 
   return (
@@ -20,7 +25,7 @@ function FilterJobs() {
             </button>
           </div>
         </div>
-        <div>{isOpen && <Modal></Modal>}</div>
+        <div>{isOpen && <Modal close={handleCloseModal}></Modal>}</div>
       </div>
     </>
   );
