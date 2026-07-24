@@ -6,24 +6,30 @@ import { Link } from "react-router-dom";
 import FilterJobs from "../components/FilterJobs";
 
 function Jobs() {
-  const [Jobs, setJobs] = useState([]);
+  // const [Jobs, setJobs] = useState([]);
 
-  useEffect(() => {
-    async function fetchJobs() {
-      const response = await axios.get("http://localhost:3000/data");
+  const filterHandler = ({ position, location, contract }) => {
+    const result = jobs.filter((job) => {
+      console.log(job);
+      let positionMatches = job.position.toLowerCase().includes(position);
+      let locationMatches = jobs.location.toLowerCase().includes(location);
+      let isFullTime = job.contract === contract;
 
-      setJobs(response.data);
-    }
-    fetchJobs();
-  }, []);
+      positionMatches && locationMatches && isFullTime;
 
-  console.log(Jobs);
+      setFilteredJobs(results);
+
+      return result;
+    });
+  };
+
+  // filterHandler();
 
   return (
     <>
-      <FilterJobs></FilterJobs>
-      {Jobs.map((job) => (
-        <Link to={`/jobDetails/${job.id}`}>
+      <FilterJobs onFilter={filterHandler}></FilterJobs>
+      {Jobs.map((job, index) => (
+        <Link to={`/jobDetails/${job.id}`} key={index}>
           <Card info={job}></Card>
         </Link>
       ))}

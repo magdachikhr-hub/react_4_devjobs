@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
 
-function FilterJobs() {
+function FilterJobs(onFilter) {
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState("");
+  const { jobs, loading } = FetchJobs();
+  const [filteredJobs, setFilteredJobs] = useState([]);
+
   const handleOpenModel = () => {
     setIsOpen(true);
   };
@@ -12,7 +15,12 @@ function FilterJobs() {
     setIsOpen(false);
   };
 
-  console.log(isOpen);
+  const handleFilterFunction = () => {
+    onFilter({ title, location, isFullTime });
+  };
+
+  // console.log(isOpen);
+  console.log(title);
 
   return (
     <>
@@ -29,7 +37,14 @@ function FilterJobs() {
             <button className="bg-white" onClick={handleOpenModel}>
               filter
             </button>
-            <button className="bg-[#5964E0]">search</button>
+            <button
+              className="bg-[#5964E0]"
+              onClick={() => {
+                onFilter();
+              }}
+            >
+              search
+            </button>
           </div>
         </div>
         <div>{isOpen && <Modal close={handleCloseModal}></Modal>}</div>
