@@ -3,7 +3,7 @@ import Modal from "./Modal";
 
 function FilterJobs() {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [title, setTitle] = useState("");
   const handleOpenModel = () => {
     setIsOpen(true);
   };
@@ -18,11 +18,18 @@ function FilterJobs() {
     <>
       <div>
         <div className="flex ">
-          <input type="search" className="bg-white" />
+          <input
+            type="search"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+            placeholder="enter job title"
+            className="bg-white w-full h-20 -mt-10 "
+          />
           <div>
-            <button className="bg-[#5964E0]" onClick={handleOpenModel}>
-              search
+            <button className="bg-white" onClick={handleOpenModel}>
+              filter
             </button>
+            <button className="bg-[#5964E0]">search</button>
           </div>
         </div>
         <div>{isOpen && <Modal close={handleCloseModal}></Modal>}</div>

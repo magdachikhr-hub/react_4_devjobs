@@ -3,6 +3,7 @@ import Card from "../components/Card";
 import axios from "axios";
 // import data from "../data/data";
 import { Link } from "react-router-dom";
+import FilterJobs from "../components/FilterJobs";
 
 function Jobs() {
   const [Jobs, setJobs] = useState([]);
@@ -20,6 +21,7 @@ function Jobs() {
 
   return (
     <>
+      <FilterJobs></FilterJobs>
       {Jobs.map((job) => (
         <Link to={`/jobDetails/${job.id}`}>
           <Card info={job}></Card>

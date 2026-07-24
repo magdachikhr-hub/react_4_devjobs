@@ -1,6 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 function Modal({ close }) {
+  const [location, setLocation] = useState("");
   // const modalElement = useRef(null);
   // console.log(modalElement.current);
 
@@ -23,7 +24,17 @@ function Modal({ close }) {
           onClick={(e) => {
             e.stopPropagation();
           }}
-        ></div>
+        >
+          <div>
+            <input
+              type="search"
+              placeholder="Filter by location..."
+              className="border"
+            />
+          </div>
+          <label htmlFor="fullTime">Full Time Only</label>
+          <input type="checkbox" id="fullTime" />
+        </div>
       </div>
     </>
   );
